@@ -237,7 +237,7 @@ if strncmp('participant',BIDS_App.level,11) && ~isempty(BIDS_App.participants)
             %
             matlab_ver = str2num(erase(ver('MATLAB').('Version'), '.'));
             if isunix && matlab_ver <= 98 % We should always be on Linux, but still
-                sts = system(sprintf('cp -L %s %s', fullfile(BIDS_App.dir, BIDS_App.participants{s}),...
+                sts = system(sprintf('cp -rL "%s" "%s"', fullfile(BIDS_App.dir, BIDS_App.participants{s}),...
                     fullfile(BIDS_App.tmpdir, BIDS_App.participants{s})));
                 sts = ~ sts; % exit semantic is inverted in shell
             else
